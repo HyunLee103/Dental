@@ -1,2 +1,2 @@
 # Dental(Pix2Pix)
-A generative model for making dental prosthetics.
+Hifi Laboratory, Department of Applied Statistics, Konkuk University, a production model for making dental prosthetics using pix2pix
