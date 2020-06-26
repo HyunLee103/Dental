@@ -249,19 +249,31 @@ def train(args):
             #     print("Vaild: EPOCH %04d / %04d | BATCH %04d / %04d | G_L1_LOSS %.4f |G_gan_LOSS %.4f  | D_fake_LOSS %.4f | D_real_LOSS %.4f " %
             #         (epoch, num_epoch, batch, num_batch_val, np.mean(loss_G_L1_val),np.mean(loss_G_gan_val), np.mean(loss_D_fake_val),np.mean(loss_D_real_val)))
 
-            if epoch % 100 == 0:
+            if epoch <= 300:
+                if epoch % 10 == 0:
             # 결과물 저장
-                input = fn_tonumpy(fn_denorm(input,mean=0.5,std=0.5)).squeeze() # generator로 생성된 output은 마지막 layer에 tanh를 거치며 normalize된다.
-                label = fn_tonumpy(fn_denorm(label,mean=0.5,std=0.5)).squeeze() # 따라서 denorm을 통해 복원
-                output = fn_tonumpy(fn_denorm(output,mean=0.5,std=0.5)).squeeze()
-                                                                            
-                id = num_batch_train * (epoch - 1) + batch
+                    input = fn_tonumpy(fn_denorm(input,mean=0.5,std=0.5)).squeeze() # generator로 생성된 output은 마지막 layer에 tanh를 거치며 normalize된다.
+                    label = fn_tonumpy(fn_denorm(label,mean=0.5,std=0.5)).squeeze() # 따라서 denorm을 통해 복원
+                    output = fn_tonumpy(fn_denorm(output,mean=0.5,std=0.5)).squeeze()
+                                                                                
+                    id = num_batch_train * (epoch - 1) + batch
 
-                plt.imsave(os.path.join(result_dir_val, 'png', '%04d_input.png' % id), input[0].squeeze(), cmap=cmap)
-                plt.imsave(os.path.join(result_dir_val, 'png', '%04d_label.png' % id), label[0].squeeze(), cmap=cmap)
-                plt.imsave(os.path.join(result_dir_val, 'png', '%04d_output.png' % id), output[0].squeeze(), cmap=cmap)
+                    plt.imsave(os.path.join(result_dir_train, 'png', '%04d_input.png' % id), input[0].squeeze(), cmap=cmap)
+                    plt.imsave(os.path.join(result_dir_train, 'png', '%04d_label.png' % id), label[0].squeeze(), cmap=cmap)
+                    plt.imsave(os.path.join(result_dir_train, 'png', '%04d_output.png' % id), output[0].squeeze(), cmap=cmap)
 
-                       
+            else:
+                if epoch % 100 == 0:
+                    input = fn_tonumpy(fn_denorm(input,mean=0.5,std=0.5)).squeeze() # generator로 생성된 output은 마지막 layer에 tanh를 거치며 normalize된다.
+                    label = fn_tonumpy(fn_denorm(label,mean=0.5,std=0.5)).squeeze() # 따라서 denorm을 통해 복원
+                    output = fn_tonumpy(fn_denorm(output,mean=0.5,std=0.5)).squeeze()
+                                                                                
+                    id = num_batch_train * (epoch - 1) + batch
+
+                    plt.imsave(os.path.join(result_dir_train, 'png', '%04d_input.png' % id), input[0].squeeze(), cmap=cmap)
+                    plt.imsave(os.path.join(result_dir_train, 'png', '%04d_label.png' % id), label[0].squeeze(), cmap=cmap)
+                    plt.imsave(os.path.join(result_dir_train, 'png', '%04d_output.png' % id), output[0].squeeze(), cmap=cmap)
+
 
 
 
