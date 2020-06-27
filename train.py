@@ -258,9 +258,9 @@ def train(args):
                                                                                 
                     id = num_batch_train * (epoch - 1) + batch
 
-                    plt.imsave(os.path.join(result_dir_train, 'png', '%04d_input.png' % id), input[0].squeeze(), cmap=cmap)
-                    plt.imsave(os.path.join(result_dir_train, 'png', '%04d_label.png' % id), label[0].squeeze(), cmap=cmap)
-                    plt.imsave(os.path.join(result_dir_train, 'png', '%04d_output.png' % id), output[0].squeeze(), cmap=cmap)
+                    plt.imsave(os.path.join(result_dir_train, 'png', '%04d_input.png' % epoch), input[0].squeeze(), cmap=cmap)
+                    plt.imsave(os.path.join(result_dir_train, 'png', '%04d_label.png' % epoch), label[0].squeeze(), cmap=cmap)
+                    plt.imsave(os.path.join(result_dir_train, 'png', '%04d_output.png' % epoch), output[0].squeeze(), cmap=cmap)
 
             else:
                 if epoch % 100 == 0:
@@ -270,9 +270,9 @@ def train(args):
                                                                                 
                     id = num_batch_train * (epoch - 1) + batch
 
-                    plt.imsave(os.path.join(result_dir_train, 'png', '%04d_input.png' % id), input[0].squeeze(), cmap=cmap)
-                    plt.imsave(os.path.join(result_dir_train, 'png', '%04d_label.png' % id), label[0].squeeze(), cmap=cmap)
-                    plt.imsave(os.path.join(result_dir_train, 'png', '%04d_output.png' % id), output[0].squeeze(), cmap=cmap)
+                    plt.imsave(os.path.join(result_dir_train, 'png', '%04d_input.png' % epoch), input[0].squeeze(), cmap=cmap)
+                    plt.imsave(os.path.join(result_dir_train, 'png', '%04d_label.png' % epoch), label[0].squeeze(), cmap=cmap)
+                    plt.imsave(os.path.join(result_dir_train, 'png', '%04d_output.png' % epoch), output[0].squeeze(), cmap=cmap)
 
 
 
